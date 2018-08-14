@@ -18,6 +18,8 @@ var originalNote = {
     body: 'Some body'
 };
 
+
+
 var originalNoteString = JSON.stringify(originalNote);
 fs.writeFileSync('notes.json', originalNoteString);
 
