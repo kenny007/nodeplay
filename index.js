@@ -19,14 +19,16 @@ if(command === 'add'){
        console.log(`Title: ${note.title}`)
        console.log(`Body: ${note.body}`)
    } else {
-       console.log('Title is a duplicate')
+       console.log('Note title taken')
    }
 } else if(command === 'list'){
     notes.getAll();
 } else if(command === 'read'){
     notes.readNote(argv.title);
 } else if(command === 'remove'){
-    notes.removeNote(argv.title);
+   var noteRemoved = notes.removeNote(argv.title);
+   var message = noteRemoved ? 'Note was removed' : 'Note not found'
+   console.log(message);
 }
 else{
     console.log('Command not recognized');
