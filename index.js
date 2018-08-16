@@ -8,8 +8,6 @@ const notes = require('./notes');
 const argv = yargs.argv;
 
 var command =  argv._[0];
-console.log('Command: ', command);
-console.log('Yargs: ', argv);
 
 if(command === 'add'){
    var note = notes.addNote(argv.title, argv.body)
@@ -20,7 +18,9 @@ if(command === 'add'){
        console.log('Note title taken')
    }
 } else if(command === 'list'){
-    notes.getAll();
+   var allNotes = notes.getAll();
+   console.log(`Printing ${allNotes.length} notes(s).`)
+   allNotes.forEach( note => notes.logNote(note));
 } else if(command === 'read'){
     var note = notes.readNote(argv.title);
     if(note){
